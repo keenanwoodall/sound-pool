@@ -9,6 +9,13 @@ namespace Beans.Sound
     [System.Serializable]
     public class SoundPool
     {
+        public static SoundPool Instance;
+        [RuntimeInitializeOnLoadMethod]
+        static void Initialize()
+        {
+            Instance = new SoundPool(128, 32);
+        }
+        
         private ObjectPool<SoundInstance> _pool;
         private List<SoundInstance> _active;
         private List<SoundHandle> _delayed;
